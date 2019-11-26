@@ -1,21 +1,24 @@
+// import { request } from "http";
+
 const baseUrl = 'https://pixabay.com/api/';
 const API_KEY = '14348648-b031b318d2a0c2c3bc8ffa9be';
 
 // Модель
 export default {
     page: 1,
-    query: '',
-    pageSize: 3,
+    query: 'cat',
+    per_page: 3,
+
     fetchImages() {
-        const requestParams = `?q=${this.query}&page=${this.page}&pageSize=${this.pageSize}?key="${API_KEY}"`;
-        
-        // Возвращаем промис содержащий response.json()
-        return fetch(baseUrl + requestParams, options)
+        const requestParams = `?q=${this.query}&page=${this.page}&per_page=${this.per_page}&key=${API_KEY}`;
+       
+        // Возвращаем промис содержащий parsedResponse.hits
+        return fetch(baseUrl + requestParams)
             .then(response => response.json())
             .then(parsedResponse => {
                 this.incrementPage();
-                console.log(parsedResponse);
-                // return parsedResponse.articles;
+                
+                return parsedResponse.hits;
             });
     },
     
@@ -24,7 +27,7 @@ export default {
     },
 
     set searchQuery(value) {
-        this.query = value;
+        this.query = encodeURIComponent(value);
     },
 
     incrementPage() {
@@ -36,10 +39,10 @@ export default {
     },
 
     get pageSize() {
-        return this.pageSize;
+        return this.per_page;
     },
 
     set pageSize(value) {
-        this.pageSize = value;
+        this.per_page = value;
     },
 };
