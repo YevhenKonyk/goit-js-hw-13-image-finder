@@ -6,7 +6,7 @@ const API_KEY = '14348648-b031b318d2a0c2c3bc8ffa9be';
 // Модель
 export default {
     page: 1,
-    query: 'cat',
+    query: '',
     per_page: 3,
 
     fetchImages() {

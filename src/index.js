@@ -17,33 +17,43 @@ refs.loadMoreBtn.addEventListener('click', loadMoreBtnClickHandler);
 
 function searchFormSubmitHandler(e) {
     e.preventDefault();
+
+    clearImagesList();
+
     const searchForm = e.currentTarget;
-    console.log('searchFormSubmitHandler');
+
+    const query = searchForm.elements.query.value;
+    console.log(query.length);
+    if (query.trim().length === 0) {
+        // TODO: show notification, input shouldnt be empty
+        return;
+    }
+
+    apiService.query = encodeURIComponent(query);
+    
     fetchImages();
 };
 
 function loadMoreBtnClickHandler() {
-    console.log('loadMoreBtnClickHandler');
-    // fetchImages();
+    fetchImages();
 };
 
 function fetchImages() {
     apiService.fetchImages().then(images => {
         console.log(images);
         renderImagesList(images);
-        // console.log(images);
-    }).catch(error => console.warn(error));
+
+        refs.loadMoreBtn.classList.remove('js-hide');
+    }).catch(error => console.warn(error.message));
 };
 
 function renderImagesList(images) {
-    // webformatURL, largeImageURL, likes, views, comments, downloads
     const markup = images.map( image => galleryListItemTpl(image));
     refs.imagesList.insertAdjacentHTML('beforeend', markup);
-    // generateListItemsMarkup
-    // insert into list
-
 };
 
 function clearImagesList() {
-    // clear list
+    refs.imagesList.innerHTML = '';
+    refs.loadMoreBtn.classList.add('js-hide');
+    apiService.resetPage();
 };
