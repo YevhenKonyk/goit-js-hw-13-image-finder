@@ -1,9 +1,15 @@
 import './styles.css';
+import './css/loader.css';
 import './css/image_finder.css'
 
+// Templates
 import galleryListItemTpl from './templates/gallery-list-item.hbs';
 
+// API
 import apiService from './js/services/apiService.js';
+
+// Plugins
+import loader from './js/plugins/loader.js';
 
 const refs = {
     searchForm: document.querySelector('#search-form'),
@@ -39,11 +45,13 @@ function loadMoreBtnClickHandler() {
 };
 
 function fetchImages() {
+    loader.showLoader();
     apiService.fetchImages().then(images => {
         console.log(images);
         renderImagesList(images);
 
         refs.loadMoreBtn.classList.remove('js-hide');
+        loader.hideLoader();
     }).catch(error => console.warn(error.message));
 };
 
