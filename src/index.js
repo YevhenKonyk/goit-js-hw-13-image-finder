@@ -29,7 +29,7 @@ function searchFormSubmitHandler(e) {
     const searchForm = e.currentTarget;
 
     const query = searchForm.elements.query.value;
-    console.log(query.length);
+
     if (query.trim().length === 0) {
         // TODO: show notification, input shouldnt be empty
         return;
@@ -47,10 +47,12 @@ function loadMoreBtnClickHandler() {
 function fetchImages() {
     loader.showLoader();
     apiService.fetchImages().then(images => {
-        console.log(images);
-        renderImagesList(images);
+        const imagesWithTags = generateImageTags(images);
+        
+        renderImagesList(imagesWithTags);
 
         refs.loadMoreBtn.classList.remove('js-hide');
+
         loader.hideLoader();
     }).catch(error => console.warn(error.message));
 };
@@ -65,3 +67,11 @@ function clearImagesList() {
     refs.loadMoreBtn.classList.add('js-hide');
     apiService.resetPage();
 };
+
+function generateImageTags(images) {
+    return images.reduce( (images, image) => {
+        image.tags = image.tags.split(',');
+        images.push(image);
+        return images;
+    }, []);
+}

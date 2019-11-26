@@ -10,7 +10,7 @@ export default {
     per_page: 3,
 
     fetchImages() {
-        const requestParams = `?q=${this.query}&page=${this.page}&per_page=${this.per_page}&key=${API_KEY}`;
+        const requestParams = `?q=${this.query}&page=${this.page}&per_page=${this.per_page}&image_type="photo"&orientation="horizontal"&key=${API_KEY}`;
        
         // Возвращаем промис содержащий parsedResponse.hits
         return fetch(baseUrl + requestParams)

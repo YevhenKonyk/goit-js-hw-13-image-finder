@@ -53,3 +53,17 @@ img {
     text-transform: uppercase;
     color: darkgrey;
 }
+
+/* Tags */
+.tags {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.tags-item {
+    font-size: 12px;
+    background-color: tomato;
+    color: white;
+    margin-right: 5px;
+}
