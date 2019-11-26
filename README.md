@@ -1,3 +1,12 @@
+# Image finder
+
+[Живая страница](https://YevhenKonyk.github.io/goit-js-hw-13-image-finder/)
+
+## Баги и улучшения
+
+Если нашли баг открывайте `issue`, обсудим, если пофиксили открывайте
+`pull request`.
+
 # Критерии приема
 
 - Созданы репозитории `goit-js-hw-13-image-finder`.
