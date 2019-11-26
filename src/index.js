@@ -16,11 +16,11 @@ const refs = {
     imagesList: document.querySelector('#gallery'),
     loadMoreBtn: document.querySelector('button[data-action="load-more"]'),
 }
-
+// Event Listeners
 refs.searchForm.addEventListener('submit', searchFormSubmitHandler);
 refs.loadMoreBtn.addEventListener('click', loadMoreBtnClickHandler);
 
-
+// Handlers
 function searchFormSubmitHandler(e) {
     e.preventDefault();
 
