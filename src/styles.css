@@ -18,3 +18,13 @@ body {
    */
   background-image: url('images/bg-pattern.png');
 }
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  width: 960px;
+  margin: 0 auto;
+}

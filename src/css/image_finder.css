@@ -1,0 +1,39 @@
+.image-finder {
+    padding: 5px;
+}
+
+/* Image finder section */
+.image-finder-title {
+    margin-bottom: 25px;
+}
+
+/* Search form */
+.search-form {
+    margin-bottom: 10px;
+}
+
+/* Gallery List */
+.gallery {
+    list-style: none;
+}
+
+.gallery_item {
+    margin-bottom: 10px;
+}
+
+/* Stats block */
+.stats {
+    display: flex;
+    margin-bottom: 25px;
+}
+
+.load-more-btn {
+    width: 130px;
+    height: 30px;
+
+    background: none;
+    border: 2px solid #000;
+
+    font-size: 18px;
+    text-transform: uppercase;
+}
