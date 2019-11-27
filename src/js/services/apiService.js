@@ -7,10 +7,10 @@ const API_KEY = '14348648-b031b318d2a0c2c3bc8ffa9be';
 export default {
     page: 1,
     query: '',
-    per_page: 3,
+    per_page: 6,
 
     fetchImages() {
-        const requestParams = `?q=${this.query}&page=${this.page}&per_page=${this.per_page}&image_type="photo"&orientation="horizontal"&key=${API_KEY}`;
+        const requestParams = `?q=${this.query}&page=${this.page}&per_page=${this.per_page}&image_type=photo&orientation=horizontal&key=${API_KEY}`;
        
         // Возвращаем промис содержащий parsedResponse.hits
         return fetch(baseUrl + requestParams)
