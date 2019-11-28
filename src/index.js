@@ -58,7 +58,7 @@ function fetchImages() {
 };
 
 function renderImagesList(images) {
-    const markup = images.map( image => galleryListItemTpl(image));
+    const markup = images.map( image => galleryListItemTpl(image)).join('');
     refs.imagesList.insertAdjacentHTML('beforeend', markup);
 };
 
